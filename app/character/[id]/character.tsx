@@ -23,7 +23,7 @@ export default function Character({ id }: Props) {
       <img
         src={imageUrl}
         alt={character?.name}
-        className="w-[128px] h-[128px] object-cover rounded-full"
+        className="flex-shrink-0 w-[128px] h-[128px] object-cover rounded-full"
       />
       <div className="flex flex-col">
         <h2 className="font-bold text-4xl">{character?.name}</h2>
@@ -46,12 +46,17 @@ export default function Character({ id }: Props) {
           </>
         )}
         {!!character?.sourceUrl && (
-          <Link className="mt-4 font-normal" href={character.sourceUrl}>
-            <Button>
-              <Globe width={16} />
-              <span className="pl-2">View on wiki</span>
-            </Button>
-          </Link>
+          <p className="mt-4">
+            <Link
+              className="cursor-pointer font-normal"
+              href={character.sourceUrl}
+            >
+              <Button>
+                <Globe width={16} />
+                <span className="pl-2">View on wiki</span>
+              </Button>
+            </Link>
+          </p>
         )}
       </div>
     </div>
