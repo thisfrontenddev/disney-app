@@ -1,5 +1,7 @@
 # Disney.db
 
+The app is is currently deployed on Vercel : [Disney.db](https://disney-app-nine.vercel.app)
+
 ## Running the development server
 
 ```bash
@@ -13,3 +15,19 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+# Running the tests
+
+```bash
+pnpm test
+```
+
+# Possible improvements
+
+- Empty states for network calls
+- Error management for network errors
+- Fix the race condition issues for the random character polling
+- Avoid flash of content for random character showcase
+- Prevent having the same random character for both showcases
+- Extract most of the async logic in dedicated hooks
+- Remove `react-query` devtools for production
