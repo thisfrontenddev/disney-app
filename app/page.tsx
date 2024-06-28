@@ -1,4 +1,4 @@
-import Characters from "@/app/characters";
+import SearchCharacters from "@/app/_components/search-characters";
 import { getQueryClient } from "@/app/get-query-client";
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 
@@ -15,7 +15,7 @@ export default async function HomePage() {
         <h2 className="font-semibold text-2xl">
           ...or search for a specific one !
         </h2>
-        <Characters />
+        <SearchCharacters />
       </main>
     </HydrationBoundary>
   );

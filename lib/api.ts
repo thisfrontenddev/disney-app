@@ -1,11 +1,11 @@
-type InfoMetadata = {
+export type InfoMetadata = {
   count: number;
   nextPage: string;
   previousPage: string;
   totalPages: number;
 };
 
-type Character = {
+export type Character = {
   _id: number;
   allies: [];
   createdAt: string;
@@ -22,7 +22,7 @@ type Character = {
   videoGames: Array<string>;
 };
 
-type Characters = Character[];
+export type Characters = Character[];
 
 export async function getCharacters(
   params: Partial<{ page: string; pageSize: string }> = {
@@ -36,6 +36,7 @@ export async function getCharacters(
   const baseUrl = `${process.env.NEXT_PUBLIC_API_ENDPOINT}/character`;
   const searchParams = new URLSearchParams(params);
   const resp = await fetch(new URL(`${baseUrl}?${searchParams}`));
+  if (!resp.ok) throw new Error("Request failed");
   return resp.json();
 }
 
@@ -46,6 +47,7 @@ export async function getCharacter(id: string): Promise<{
   const resp = await fetch(
     `${process.env.NEXT_PUBLIC_API_ENDPOINT}/character/${id}`
   );
+  if (!resp.ok) throw new Error("Request failed");
   return resp.json();
 }
 
@@ -57,5 +59,6 @@ export async function findCharacter(searchTerm: string): Promise<{
   const resp = await fetch(
     `${process.env.NEXT_PUBLIC_API_ENDPOINT}/character?name=${term}`
   );
+  if (!resp.ok) throw new Error("Request failed");
   return resp.json();
 }
