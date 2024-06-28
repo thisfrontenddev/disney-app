@@ -22,7 +22,7 @@ export default function CharacterCard({ character }: Props) {
             alt={character.name}
           />
           <div className="flex flex-col">
-            <CardTitle>{character.name}</CardTitle>
+            <CardTitle data-testid="character-name">{character.name}</CardTitle>
             <CardDescription>
               {character.films?.[0] || character.tvShows?.[0]}
             </CardDescription>
