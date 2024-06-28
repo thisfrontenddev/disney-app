@@ -1,5 +1,6 @@
 "use client";
 
+import { ListItem } from "@/app/list-item";
 import { getCharacters } from "@/lib/api";
 import { useQuery } from "@tanstack/react-query";
 
@@ -20,7 +21,12 @@ export default function Characters() {
   return (
     <ul>
       {data?.data.map((character) => (
-        <li key={character._id}>{character.name}</li>
+        <ListItem
+          key={character._id}
+          className="w-full"
+          name={character.name}
+          imageUrl={character.imageUrl || "https://placehold.co/30x30"}
+        />
       ))}
     </ul>
   );
