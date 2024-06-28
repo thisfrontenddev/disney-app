@@ -24,7 +24,7 @@ export default function CharacterCard({ character }: Props) {
           <div className="flex flex-col">
             <CardTitle>{character.name}</CardTitle>
             <CardDescription>
-              {character.films[0] || character.tvShows[0]}
+              {character.films?.[0] || character.tvShows?.[0]}
             </CardDescription>
           </div>
         </CardHeader>
