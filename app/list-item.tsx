@@ -1,12 +1,16 @@
 import Link from "next/link";
 
 type Props = {
+  id: number;
   imageUrl: string;
   name: string;
 };
-export function ListItem({ imageUrl, name }: Props) {
+export function ListItem({ id, imageUrl, name }: Props) {
   return (
-    <Link href="/" className="block hover:bg-slate-100 p-2 rounded">
+    <Link
+      href={`/character/${id}`}
+      className="block hover:bg-slate-100 p-2 rounded"
+    >
       <li className="flex flex-row items-center gap-2">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img

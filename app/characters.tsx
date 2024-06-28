@@ -23,7 +23,7 @@ export default function Characters() {
       {data?.data.map((character) => (
         <ListItem
           key={character._id}
-          className="w-full"
+          id={character._id}
           name={character.name}
           imageUrl={character.imageUrl || "https://placehold.co/30x30"}
         />

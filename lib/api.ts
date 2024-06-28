@@ -35,12 +35,18 @@ export async function getCharacters(
 }> {
   const baseUrl = `${process.env.NEXT_PUBLIC_API_ENDPOINT}/character`;
   const searchParams = new URLSearchParams(params);
-  const req = await fetch(new URL(`${baseUrl}?${searchParams}`));
-  return req.json();
+  const resp = await fetch(new URL(`${baseUrl}?${searchParams}`));
+  return resp.json();
 }
 
-export async function getCharacter(id: number) {
-  return fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/character/${id}`);
+export async function getCharacter(id: string): Promise<{
+  info: InfoMetadata;
+  data: Character;
+}> {
+  const resp = await fetch(
+    `${process.env.NEXT_PUBLIC_API_ENDPOINT}/character/${id}`
+  );
+  return resp.json();
 }
 
 export async function findCharacter(searchTerm: string) {
