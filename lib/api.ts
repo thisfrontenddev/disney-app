@@ -49,9 +49,13 @@ export async function getCharacter(id: string): Promise<{
   return resp.json();
 }
 
-export async function findCharacter(searchTerm: string) {
+export async function findCharacter(searchTerm: string): Promise<{
+  info: InfoMetadata;
+  data: Characters;
+}> {
   const term = encodeURI(searchTerm);
-  return fetch(
+  const resp = await fetch(
     `${process.env.NEXT_PUBLIC_API_ENDPOINT}/character?name=${term}`
   );
+  return resp.json();
 }
