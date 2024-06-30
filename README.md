@@ -27,7 +27,6 @@ pnpm test
 - Empty states for network calls
 - Error management for network errors
 - Fix the race condition issues for the random character polling
-- Avoid flash of content for random character showcase
 - Prevent having the same random character for both showcases
 - Extract most of the async logic in dedicated hooks
 - Remove `react-query` devtools for production
