@@ -32,6 +32,7 @@ export default function SearchCharacters() {
       <Input
         className="my-4"
         type="search"
+        name="search-character"
         placeholder="Search for any character"
         onChange={handleSearchChange}
       />
