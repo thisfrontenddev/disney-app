@@ -16,13 +16,13 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-# Running the tests
+## Running the tests
 
 ```bash
 pnpm test
 ```
 
-# Possible improvements
+## Possible improvements
 
 - Empty states for network calls
 - Error management for network errors
@@ -31,3 +31,5 @@ pnpm test
 - Prevent having the same random character for both showcases
 - Extract most of the async logic in dedicated hooks
 - Remove `react-query` devtools for production
+- Stop polling for new random characters when the window focus is gone with a resumable interval system
+- Create a type-safe environment variable system (t3-env, zod...)
