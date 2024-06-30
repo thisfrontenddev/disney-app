@@ -18,12 +18,12 @@ export default function Character({ id }: Props) {
   const character = data?.data;
   const imageUrl = character?.imageUrl || "https://placehold.co/128x128";
   return (
-    <div className="flex flex-row gap-8">
+    <div className="flex flex-col md:flex-row gap-8">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={imageUrl}
         alt={character?.name}
-        className="flex-shrink-0 w-[128px] h-[128px] object-cover rounded-full"
+        className="flex-shrink-0 w-full md:w-[128px] md:h-[128px] object-cover md:rounded-full"
       />
       <div className="flex flex-col">
         <h2 className="font-bold text-4xl">{character?.name}</h2>

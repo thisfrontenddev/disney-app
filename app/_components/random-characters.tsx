@@ -19,7 +19,7 @@ export default function RandomCharacters() {
   });
 
   return (
-    <div className="flex gap-8 mb-4">
+    <div className="flex flex-col md:flex-row gap-4 md:gap-8 mb-4">
       <CharacterCard
         data-testid="random-one"
         character={firstCharacter?.data}
