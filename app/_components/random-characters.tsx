@@ -1,51 +1,33 @@
 "use client";
 import CharacterCard from "@/app/_components/character-card";
+import { useRandomCharacterIdSetByInterval } from "@/app/_hooks/use-random-character-id-set-by-interval";
 import { getCharacter } from "@/lib/api";
-import { randomNumber } from "@/lib/utils";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
-
-/**
- * As weird as it is, the first 6 ids don't return
- * anything. The other number is the maximum reachable
- * id to date. Can be improved, but that'll do for this
- * exercise
- * */
-const MIN_RANGE = 6;
-const MAX_RANGE = 7526;
 
 export default function RandomCharacters() {
-  const [randomIds, setRandomIds] = useState([
-    randomNumber(MIN_RANGE, MAX_RANGE),
-    randomNumber(MIN_RANGE, MAX_RANGE),
-  ]);
+  const [firstCharacterId, secondCharacterId] =
+    useRandomCharacterIdSetByInterval();
 
-  useEffect(() => {
-    let interval = setInterval(() => {
-      setRandomIds([
-        randomNumber(MIN_RANGE, MAX_RANGE),
-        randomNumber(MIN_RANGE, MAX_RANGE),
-      ]);
-    }, 10_000);
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
-
-  const { data: randomDataOne } = useQuery({
-    queryKey: ["getCharacter", randomIds[0]],
-    queryFn: () => getCharacter(`${randomIds[0]}`),
+  const { data: firstCharacter } = useQuery({
+    queryKey: ["getCharacter", firstCharacterId],
+    queryFn: () => getCharacter(`${firstCharacterId}`),
   });
 
-  const { data: randomDataTwo } = useQuery({
-    queryKey: ["getCharacter", randomIds[1]],
-    queryFn: () => getCharacter(`${randomIds[1]}`),
+  const { data: secondCharacter } = useQuery({
+    queryKey: ["getCharacter", secondCharacterId],
+    queryFn: () => getCharacter(`${secondCharacterId}`),
   });
 
   return (
     <div className="flex gap-8 mb-4">
-      <CharacterCard character={randomDataOne?.data} />
-      <CharacterCard character={randomDataTwo?.data} />
+      <CharacterCard
+        data-testid="random-one"
+        character={firstCharacter?.data}
+      />
+      <CharacterCard
+        data-testid="random-two"
+        character={secondCharacter?.data}
+      />
     </div>
   );
 }

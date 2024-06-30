@@ -1,9 +1,14 @@
 import RandomCharacters from "@/app/_components/random-characters";
-import { QueryClientProviderWrapper } from "@/lib/test-utils";
-import { render, screen } from "@testing-library/react";
-import nock from "nock";
+import { QueryClientProviderWrapper } from "@/mocks/utils";
+import { render, waitFor } from "@testing-library/react";
 
-jest.mock("@/lib/utils");
+jest.mock("@/lib/utils", () => {
+  const original = jest.requireActual("@/lib/utils");
+  return {
+    ...original,
+    randomNumber: jest.fn().mockReturnValue(112),
+  };
+});
 
 const buildComponent = () =>
   render(
@@ -12,22 +17,15 @@ const buildComponent = () =>
     </QueryClientProviderWrapper>
   );
 
-console.log(process.env.NEXT_PUBLIC_API_ENDPOINT);
-const getCharacterMock = nock("https://api.disneyapi.dev/")
-  .get("/character/112")
-  .reply(200, {
-    info: {},
-    data: {
-      name: "Character mock",
-      imageUrl: "https://fakeimgurl.site/unknown.jpg",
-    },
-  });
-
 describe("Main success scenario", () => {
-  it("Renders when set the correct data", async () => {
-    const { debug } = buildComponent();
-    console.log(debug());
-    expect(screen.getAllByText("Achilles")).toHaveLength(2);
-    // expect(screen.getAllByText("Character mock")).toHaveLength(2);
+  it("renders two character cards, with data", async () => {
+    const { getByTestId, queryAllByText, getAllByText } = buildComponent();
+    expect(getByTestId("random-one")).toBeInTheDocument();
+    expect(getByTestId("random-two")).toBeInTheDocument();
+
+    expect(queryAllByText(/Achilles/).length).toBe(0);
+    await waitFor(() => {
+      expect(getAllByText(/Achilles/).length).toBe(2);
+    });
   });
 });

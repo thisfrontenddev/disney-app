@@ -1,5 +1,5 @@
 "use client";
-import { ListItem } from "@/app/list-item";
+import { ListItem } from "@/app/_components/list-item";
 import type { Characters } from "@/lib/api";
 
 type Props = { characters?: Characters };

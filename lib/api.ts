@@ -35,7 +35,7 @@ export async function getCharacters(
 }> {
   const baseUrl = `${process.env.NEXT_PUBLIC_API_ENDPOINT}/character`;
   const searchParams = new URLSearchParams(params);
-  const resp = await fetch(new URL(`${baseUrl}?${searchParams}`));
+  const resp = await fetch(`${baseUrl}?${searchParams}`);
   if (!resp.ok) throw new Error("Request failed");
   return resp.json();
 }
