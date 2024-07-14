@@ -12,6 +12,7 @@ export function ListItem({ id, imageUrl, name }: Props) {
       className="block hover:bg-slate-100 p-2 rounded"
     >
       <li className="flex flex-row items-center gap-2">
+        {/* Not using next/image because image hosts differ a LOT */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           className="object-cover w-[30px] h-[30px]"

@@ -1,4 +1,4 @@
-import Providers from "@/app/providers";
+import { Providers } from "@/app/providers";
 import { cn } from "@/lib/utils";
 import { BookHeart } from "lucide-react";
 import type { Metadata } from "next";

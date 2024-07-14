@@ -1,3 +1,4 @@
+import "@/mocks/next-router-utils";
 import "@testing-library/jest-dom";
 
 const HOST = process.env.NEXT_PUBLIC_API_ENDPOINT;

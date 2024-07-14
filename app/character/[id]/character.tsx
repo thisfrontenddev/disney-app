@@ -19,6 +19,7 @@ export default function Character({ id }: Props) {
   const imageUrl = character?.imageUrl || "https://placehold.co/128x128";
   return (
     <div className="flex flex-col md:flex-row gap-8">
+      {/* Not using next/image because image hosts differ a LOT */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={imageUrl}
