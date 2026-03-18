@@ -6,6 +6,8 @@ import { getQueryClient } from "@/app/get-query-client";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import { Suspense } from "react";
 
+export const dynamic = "force-dynamic";
+
 export default async function HomePage({
   searchParams,
 }: {

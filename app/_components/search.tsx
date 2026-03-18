@@ -16,7 +16,8 @@ export default function Search({ placeholder }: Props) {
     if (term) {
       params.set("query", term);
     } else {
-      params.set("query", "");
+      // params.set("query", "");
+      params.delete("query");
     }
     replace(`${pathname}?${params.toString()}`);
   }, 300);
